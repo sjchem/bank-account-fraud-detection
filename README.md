@@ -4,24 +4,40 @@ Bank acount fraud detection
 - Data used
 - Where your API can be accessed
 - ...
-
 bank-account-fraud-detection/
 │
-├── notebooks/
-│   ├── 01_eda_fraud_analysis.ipynb
-│   ├── 02_feature_engineering_preprocessing.ipynb
-│   ├── 03_modeling_baseline_lightgbm.ipynb
-│   ├── 04_model_explainability_shap.ipynb
-│   └── 05_inference_pipeline_simulation.ipynb
+├── api/
+│   └── fastapi.py
 │
-├── src/
+├── logic-main
+│   ├── config.py
 │   ├── features.py
+│   ├── preprocessing.py
 │   ├── model.py
-│   └── inference.py
+│   ├── train.py
+│   ├── inference.py
+│   └── utils.py
 │
-├── data/
+├── models/
+│   ├── lgb_modified.pkl
+│   └── lgb_modified.txt
+│
+├── notebooks/
+│   ├── 01_eda.ipynb
+│   ├── 02_feature_engineering.ipynb
+│   ├── 03_modeling_lightgbm.ipynb
+│   └── 04_shap.ipynb
+│
+├── raw_data/
+│
+├── Dockerfile
+├── Makefile
+├── README.md
 ├── requirements.txt
-└── README.md
+├── .env.sample
+└── .gitignore
+
+
 
 # API
 Document main API endpoints here
