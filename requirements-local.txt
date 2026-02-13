@@ -1,6 +1,6 @@
 # ============================================
-# ShieldBank: Minimal Production Dependencies
-# For Streamlit Cloud deployment
+# ShieldBank: Local Development Dependencies
+# Use this for running locally with all features
 # ============================================
 
 # Dashboard
@@ -18,3 +18,17 @@ fastapi==0.109.0
 uvicorn[standard]==0.27.0
 pydantic>=2.0.0,<3.0.0
 requests>=2.31.0
+
+# Visualization & Analysis
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Development & Notebooks
+jupyter>=1.0.0
+ipython>=8.0.0
+ipykernel>=6.0.0
+
+# Code Quality
+pytest>=7.0.0
+black>=23.0.0
+flake8>=6.0.0

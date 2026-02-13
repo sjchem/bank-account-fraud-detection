@@ -1,11 +1,12 @@
 # ============================================
-# ShieldBank: Minimal Production Dependencies
-# For Streamlit Cloud deployment
+# ShieldBank: Cloud API Deployment
+# For Railway/Render/Heroku (API only)
 # ============================================
 
-# Dashboard
-streamlit==1.32.0
-plotly==5.19.0
+# API
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+pydantic>=2.0.0,<3.0.0
 
 # Data Processing & ML
 numpy>=1.23.0,<2.0.0
@@ -13,8 +14,5 @@ pandas>=2.0.0,<2.3.0
 scikit-learn>=1.3.0,<1.6.0
 lightgbm>=4.0.0,<4.4.0
 
-# API
-fastapi==0.109.0
-uvicorn[standard]==0.27.0
-pydantic>=2.0.0,<3.0.0
+# HTTP
 requests>=2.31.0

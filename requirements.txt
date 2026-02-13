@@ -1,29 +1,31 @@
 # ============================================
 # ShieldBank: Financial Crime Detection
-# Core Dependencies
+# Streamlit Cloud Compatible Dependencies
 # ============================================
 
-# Data Processing & ML
-numpy==2.2.6
-pandas==2.3.3
-scikit-learn==1.7.2
-lightgbm==4.3.0
-
-# API
-fastapi==0.109.0
-uvicorn==0.27.0
-pydantic==2.5.3
-requests==2.32.5
-
-# Dashboard
+# Dashboard (must be first for Streamlit Cloud)
 streamlit==1.32.0
 plotly==5.19.0
 
-# Development & Notebooks (Optional)
-jupyter==1.0.0
-matplotlib==3.10.8
-seaborn==0.13.2
-ipython==8.38.0
+# Data Processing & ML
+numpy>=1.23.0,<2.0.0
+pandas>=2.0.0,<2.3.0
+scikit-learn>=1.3.0,<1.6.0
+lightgbm>=4.0.0,<4.4.0
 
-# Testing (Optional)
-pytest==9.0.2
+# API
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+pydantic>=2.0.0,<3.0.0
+requests>=2.31.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Development & Notebooks (Optional - comment out for minimal deployment)
+jupyter>=1.0.0
+ipython>=8.0.0
+
+# Testing (Optional - comment out for minimal deployment)
+pytest>=7.0.0

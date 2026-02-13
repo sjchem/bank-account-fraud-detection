@@ -56,24 +56,23 @@ bank-account-fraud-detection/
 
 ## 🚀 Quick Start
 
-### 1. Installation
+### Local Development
+
+**1. Installation**
 
 ```bash
 # Clone the repository
 git clone <repository-url>
 cd bank-account-fraud-detection
 
-# Install all dependencies (including notebooks)
-make install_requirements
+# Install local development dependencies (recommended)
+make install_local
 
-# Or for production only (minimal dependencies)
-pip install -r requirements-minimal.txt
-
-# Or manually with all dependencies
-pip install -r requirements.txt
+# Or manually
+pip install -r requirements-local.txt
 ```
 
-### 2. Start the API Server
+**2. Start the API Server**
 
 ```bash
 # Using Makefile
@@ -85,7 +84,7 @@ uvicorn api.fastapi:app --reload --port 8000
 
 The API will be available at `http://localhost:8000`
 
-### 3. Launch the ShieldBank Dashboard
+**3. Launch the ShieldBank Dashboard**
 
 ```bash
 # Using Makefile
@@ -96,6 +95,38 @@ streamlit run streamlit_app/app.py
 ```
 
 The dashboard will open automatically at `http://localhost:8501`
+
+---
+
+### Cloud Deployment
+
+Deploy separately for public access:
+
+**Option 1: Dashboard Only (Streamlit Cloud)**
+```bash
+# Free, unlimited
+# Tabs 1 & 3 fully functional
+# See DEPLOYMENT.md for details
+```
+
+**Option 2: Full Stack (Streamlit + Railway/Render)**
+```bash
+# Dashboard → Streamlit Cloud (free)
+# API → Railway/Render/Heroku (free tier available)
+# All 3 tabs fully functional
+```
+
+📖 **Full deployment guide:** See [DEPLOYMENT.md](DEPLOYMENT.md)
+
+---
+
+## 📦 Requirements Files
+
+| File | Purpose | When to Use |
+|------|---------|-------------|
+| `requirements-local.txt` | Full local development | `make install_local` |
+| `requirements-api.txt` | API deployment only | Railway/Render/Heroku |
+| `requirements.txt` | Streamlit Cloud | Automatic |
 
 ## 🎨 Dashboard Features
 
@@ -214,7 +245,55 @@ The model was developed through rigorous experimentation documented in the noteb
 - Algorithm: LightGBM (Gradient Boosting)
 - Threshold: 0.75 (optimized for fraud prevention)
 
+## ☁️ Streamlit Cloud Deployment
+
+### Quick Deploy to Streamlit Cloud
+
+1. **Push to GitHub**:
+   ```bash
+   git add .
+   git commit -m "Ready for Streamlit Cloud"
+   git push origin main
+   ```
+
+2. **Deploy on Streamlit Cloud**:
+   - Go to [share.streamlit.io](https://share.streamlit.io)
+   - Click "New app"
+   - Select your repository: `bank-account-fraud-detection`
+   - Set main file path: `streamlit_app/app.py`
+   - Click "Deploy"
+
+3. **Important Notes**:
+   - ⚠️ **API Warning**: The FastAPI backend won't run on Streamlit Cloud (dashboard only)
+   - The live monitoring and mock data features will work
+   - For full functionality (fraud prediction), deploy the API separately (see Docker section)
+   - Or use Streamlit Cloud for demo/visualization only
+
+### Streamlit Cloud Configuration
+
+The app is pre-configured with:
+- ✅ `requirements.txt` - Compatible dependency versions
+- ✅ `packages.txt` - System dependencies (if needed)
+- ✅ Python 3.9+ compatible
+
+### Troubleshooting Streamlit Cloud
+
+**If you see numpy version conflicts:**
+```bash
+# Use the minimal requirements
+cp requirements-minimal.txt requirements.txt
+git commit -am "Use minimal requirements for Streamlit Cloud"
+git push
+```
+
+**Dashboard-only mode** (without API):
+- Live monitoring simulation works
+- Fraud Deep Dive will show connection error (expected)
+- Executive Summary and Model Performance fully functional
+
 ## 🐳 Docker Deployment
+
+### Local Docker
 
 ```bash
 # Build local image
@@ -222,9 +301,25 @@ make docker_build_local
 
 # Run container
 make docker_run_local
+```
 
-# Interactive mode
-make docker_run_local_interactively
+### Cloud Docker (GCP)
+
+```bash
+# Setup GCP
+make gcloud_setup
+
+# Create repository
+make gcloud_create_repo
+
+# Build cloud image
+make docker_build
+
+# Push to registry
+make gcloud_push
+
+# Deploy to Cloud Run
+make gcloud_deploy
 ```
 
 ## 🎨 Theme & Design

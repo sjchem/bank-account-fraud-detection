@@ -6,6 +6,14 @@
 install_requirements:
 	@pip install -r requirements.txt
 
+install_local:
+	@echo "Installing local development dependencies..."
+	@pip install -r requirements-local.txt
+
+install_api:
+	@echo "Installing API-only dependencies..."
+	@pip install -r requirements-api.txt
+
 install:
 	@pip install . -U
 
