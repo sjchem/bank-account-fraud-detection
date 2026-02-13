@@ -1,6 +1,6 @@
 # ============================================
-# ShieldBank: Financial Crime Detection
-# Core Dependencies
+# ShieldBank: Production Dependencies Only
+# Use this for deployment (no notebooks/dev tools)
 # ============================================
 
 # Data Processing & ML
@@ -18,12 +18,3 @@ requests==2.32.5
 # Dashboard
 streamlit==1.32.0
 plotly==5.19.0
-
-# Development & Notebooks (Optional)
-jupyter==1.0.0
-matplotlib==3.10.8
-seaborn==0.13.2
-ipython==8.38.0
-
-# Testing (Optional)
-pytest==9.0.2
