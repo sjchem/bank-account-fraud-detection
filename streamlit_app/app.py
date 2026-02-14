@@ -211,8 +211,8 @@ with st.sidebar:
 st.markdown("# 🛡️ ShieldBank: Financial Crime Detection")
 st.markdown("**Command Center** | Real-time fraud monitoring powered by LightGBM & SHAP")
 
-# Create Tabs (Dashboard + Model Performance only for cloud deployment)
-tab1, tab2 = st.tabs(["📊 Executive Summary", "🎯 Model Performance"])
+# Create Tabs
+tab1, tab2, tab3 = st.tabs(["📊 Executive Summary", "🔍 Fraud Deep Dive", "🎯 Model Performance"])
 
 # ====================================
 # TAB 1: EXECUTIVE SUMMARY
@@ -449,11 +449,8 @@ with tab1:
             st.markdown("---")
 
 # ====================================
-# TAB 2: FRAUD DEEP DIVE (HIDDEN FOR CLOUD DEPLOYMENT)
+# TAB 2: FRAUD DEEP DIVE
 # ====================================
-# Note: This tab requires FastAPI backend which doesn't run on Streamlit Cloud
-# Uncomment below and change tab count to 3 if running locally with API
-"""
 with tab2:
     st.markdown("## 🔍 Fraud Deep Dive")
     st.markdown("Individual transaction inspection and fraud prediction")
@@ -701,12 +698,11 @@ with tab2:
             except Exception as e:
                 st.error(f"❌ Connection error: {str(e)}")
                 st.info("💡 Make sure the FastAPI server is running: `make run-api`")
-"""
 
 # ====================================
-# TAB 2: MODEL PERFORMANCE
+# TAB 3: MODEL PERFORMANCE
 # ====================================
-with tab2:
+with tab3:
     st.markdown("## 🎯 Model Performance & Explainability")
     st.markdown("Understanding model behavior and performance metrics")
 
